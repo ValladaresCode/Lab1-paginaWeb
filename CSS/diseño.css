@@ -1,0 +1,445 @@
+/* ================= GOOGLE FONT ================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* ================= PALETA DE COLORES ================= */
+:root {
+    --azul-oscuro: #16233f;
+    --azul-claro: #23376d;
+    --vino: #7d0a42;
+    --naranja: #eb7207;
+    --amarillo: #fdb500;
+    --blanco: #ffffff;
+}
+
+/* ================= ESTRUCTURA GENERAL ================= */
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* 🔥 tipografía moderna */
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+}
+
+/* ================= MENÚ ================= */
+.menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+    background-color: var(--vino);
+}
+
+.menu li {
+    margin: 0 20px;
+}
+
+.menu a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.menu a:hover {
+    background-color: var(--naranja);
+}
+
+/* ================= CONTENIDO ================= */
+.contenido {
+    margin: 50px auto;
+    max-width: 900px;
+    text-align: center;
+}
+
+.contenido p {
+    text-align: justify;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+/* ================= TÍTULOS ================= */
+h1 {
+    font-size: 46px;
+    text-align: center;
+    color: var(--amarillo);
+    margin-top: 30px;
+}
+
+h2 {
+    font-size: 30px;
+    color: var(--naranja);
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* ================= IMÁGENES ================= */
+.imagen-principal {
+    width: 750px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin: 30px auto;
+    display: block;
+
+    /* FADE + SLIDE */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1.3s ease forwards;
+
+    /* TRANSICIÓN PARA HOVER */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* 🔥 EFECTO LEVANTAR */
+.imagen-principal:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.45);
+}
+
+/* ================= ANIMACIÓN ================= */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= LISTAS ================= */
+.contenido ul {
+    padding: 0;
+    list-style-position: inside;
+}
+
+.contenido li {
+    max-width: 800px;
+    margin: 14px auto;
+    text-align: justify;
+    font-weight: 300;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background-color: var(--vino);
+    color: var(--blanco);
+    text-align: center;
+    padding: 22px;
+    font-size: 16px;
+    margin-top: 60px;
+}
+
+
+/* ================= TABLA DE IMÁGENES ================= */
+.tabla-imagenes {
+    margin: 24px auto;  /* mantiene márgenes superior/inferior y centra la tabla */
+    max-width: 1200px;   /* ancho máximo más grande que antes, tabla más compacta que toda la pantalla */
+}
+
+.tabla-imagenes table {
+    width: 100%;        /* ocupa todo el contenedor */
+    border-collapse: collapse;
+}
+
+.tabla-imagenes td {
+    padding: 10px;       /* espacio interno de celdas */
+    vertical-align: top; /* alinea contenido arriba */
+}
+
+/* Primer columna: imágenes grandes y con el mismo tamaño que antes */
+.tabla-imagenes td:first-child img {
+    width: 550px;   /* tamaño grande restaurado */
+    height: auto;   /* mantiene proporción */
+    display: block;
+    margin: 0 auto 8px auto; /* centrado horizontal con margen inferior para el texto */
+}
+
+/* Texto debajo de la imagen */
+.texto-imagen {
+    text-align: center;  /* texto centrado debajo de la imagen */
+    margin: 0;
+    font-size: 18px;
+    color: var(--blanco);
+}
+
+/* Segunda columna: descripción alineada a la izquierda */
+.tabla-imagenes td:nth-child(2) {
+    text-align: left;  /* alinea texto a la izquierda */
+}
+
+.descripcion {
+    margin: 0;       /* elimina márgenes extra */
+    font-size: 22px; /* tamaño más grande para mejor lectura */
+    color: var(--blanco);
+}
+
+/* ================= BANNER DE IMÁGENES ================= */
+.banner-imagenes {
+    display: flex;
+    list-style: none;         /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    justify-content: center;  /* Centra el menú horizontalmente */
+    gap: 20px;                /* Espacio entre las imágenes */
+    background-color: var(--vino); /* Fondo de color vino */
+    padding: 20px 0;          /* Espaciado superior e inferior */
+    border-radius: 10px;      /* Bordes redondeados en el contenedor */
+}
+
+.banner-imagenes li {
+    display: flex;            /* Necesario para que las imágenes se alineen correctamente */
+    justify-content: center;  /* Centra las imágenes dentro de cada li */
+    align-items: center;      /* Centra las imágenes verticalmente */
+}
+
+.banner-imagenes img {
+    width: 180px;             /* Establece un tamaño uniforme más grande para todas las imágenes */
+    height: auto;             /* Mantiene la proporción de las imágenes */
+    border-radius: 8px;       /* Bordes redondeados para un look más estilizado */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave alrededor de las imágenes */
+    transition: transform 0.3s ease; /* Añade transición suave al hover */
+}
+
+.banner-imagenes img:hover {
+    transform: scale(1.1);    /* Aumenta el tamaño de la imagen al pasar el cursor sobre ella */
+}
+
+/* ================= PALETA DE COLORES ================= */
+:root {
+    --azul-claro: #23376d;  /* Azul claro actualizado */
+    --vino: #7d0a42;
+    --naranja: #eb7207;
+    --amarillo: #fdb500;
+    --blanco: #ffffff;
+}
+
+/* TABLA */
+.tabla-una-fila {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    border-collapse: separate;
+    border-spacing: 24px;
+}
+
+/* CELDAS → NO FLEX */
+.tabla-una-fila td {
+    width: 50%;
+    height: 220px;
+    padding: 0;
+    border-radius: 8px;
+}
+
+.color-vino {
+    background-color: var(--vino);
+}
+
+.color-amarillo {
+    background-color: var(--amarillo);
+}
+
+.color-naranja {
+    background-color: var(--naranja);
+}
+
+.color-azul-claro {
+    background-color: var(--azul-claro);  /* Azul claro */
+}
+
+.cuadro {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.numero {
+    font-size: 72px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.linea {
+    width: 40px;
+    height: 2px;
+    background-color: var(--blanco);
+    margin: 10px 0;
+}
+
+/* TEXTO DE LOS CUADROS (NO CHOCA CON NADA) */
+.texto-cuadro {
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: static;
+}
+
+
+.footer-vino {
+    background-color: #7a0d3a; /* VINO */
+    color: white;
+    padding: 40px 60px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.2fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* SECCIONES */
+.footer-section h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.footer-section p {
+    color: var(--blanco);
+    font-size: 16px;
+    margin: 0;
+    cursor: default;        /* ❌ no manita */
+    text-decoration: none;  /* ❌ sin subrayado */
+}
+
+.footer-section p:hover {
+    text-decoration: none;
+}
+
+/* LOGO */
+.footer-logo {
+    width: 400px;      /* ⬅️ cambia este valor */
+    max-width: 100%;
+    height: auto;
+}
+
+.center {
+    text-align: center;
+}
+
+
+
+/* BOTONES */
+.btn-footer {
+    display: inline-block;
+    margin: 12px 0;
+    padding: 8px 18px;
+    background-color: white;
+    color: #7a0d3a;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* ICONOS */
+.social-icons span {
+    display: inline-block;
+    margin-left: 10px;
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    color: #7a0d3a;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    font-weight: bold;
+}
+
+/* PIE */
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    text-align: center;
+    font-size: 13px;
+}
+
+.footer {
+    background-color: var(--vino);
+    padding: 30px 20px;
+}
+
+.footer-contenido {
+    max-width: 1200px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-texto p {
+    margin: 0;
+    font-size: 18px;
+    color: var(--blanco);
+}
+
+/* ICONOS */
+.footer-iconos {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-iconos img {
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-iconos img:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+.social-icons {
+    display: flex !important;
+    justify-content: flex-start !important; /* ⬅️ los pega a la izquierda */
+    align-items: center;
+    gap: 0 !important;
+
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+.social-icons img {
+    width: 42px;
+    height: 42px;
+    margin: 0 !important;       /* elimina márgenes */
+    padding: 0 !important;      /* elimina padding */
+    display: block;             /* elimina espacios inline */
+}
+
+.footer-section:last-child p {
+    text-align: center;
+    width: 100%;
+}
+
+
+.footer-section.right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;   /* 🔥 empuja TODO a la derecha */
+    text-align: right;
+}
+
+

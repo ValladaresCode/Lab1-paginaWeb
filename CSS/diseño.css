@@ -17,7 +17,7 @@ html, body {
 }
 
 body {
-    font-family: 'Poppins', sans-serif; /* 🔥 tipografía moderna */
+    font-family: 'Poppins', sans-serif;
     font-size: 18px;
     margin: 0;
     padding: 0;
@@ -57,11 +57,16 @@ body {
 .contenido {
     margin: 50px auto;
     max-width: 900px;
+}
+
+/* ❗ NO centramos todo para no romper la tabla */
+.contenido h2,
+.contenido h3,
+.contenido p {
     text-align: center;
 }
 
 .contenido p {
-    text-align: justify;
     line-height: 1.7;
     font-weight: 300;
 }
@@ -93,40 +98,52 @@ h3 {
     margin: 30px auto;
     display: block;
 
-    /* FADE + SLIDE */
+    /* Fade-in */
     opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 1.3s ease forwards;
+    animation: fadeImg 1.2s ease forwards;
 
-    /* TRANSICIÓN PARA HOVER */
+    /* Hover */
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* 🔥 EFECTO LEVANTAR */
 .imagen-principal:hover {
     transform: translateY(-12px) scale(1.03);
     box-shadow: 0 20px 35px rgba(0,0,0,0.45);
 }
 
-/* ================= ANIMACIÓN ================= */
-@keyframes fadeUp {
+@keyframes fadeImg {
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
-/* ================= LISTAS ================= */
-.contenido ul {
-    padding: 0;
-    list-style-position: inside;
+/* ================= TABLA BIOGRAFÍA (RESPETADA) ================= */
+.tabla-biografia {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    border: 3px solid var(--vino);
 }
 
-.contenido li {
-    max-width: 800px;
-    margin: 14px auto;
-    text-align: justify;
-    font-weight: 300;
+.tabla-biografia th,
+.tabla-biografia td {
+    padding: 16px;
+    text-align: left;
+    border: 1px solid var(--amarillo);
+    font-size: 18px;
+}
+
+.tabla-biografia th {
+    background-color: var(--vino);
+    color: var(--blanco);
+}
+
+.tabla-biografia td {
+    background-color: var(--azul-claro);
+}
+
+.tabla-biografia tbody tr:hover {
+    background-color: var(--naranja);
 }
 
 /* ================= FOOTER ================= */

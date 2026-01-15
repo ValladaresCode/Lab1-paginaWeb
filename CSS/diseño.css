@@ -1,487 +1,404 @@
-/* ================= PALETA DE COLORES ================= */
+
 :root {
     --azul-oscuro: #16233f;
+    --azul-claro: #23376d;
     --vino: #7d0a42;
     --naranja: #eb7207;
     --amarillo: #fdb500;
     --blanco: #ffffff;
 }
- 
+
+/* ================= RESET BÁSICO ================= */
+* {
+    box-sizing: border-box;
+}
+
 /* ================= ESTRUCTURA GENERAL ================= */
 html, body {
-    height: 100%;
-}
- 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px; /* TEXTO GENERAL MÁS GRANDE */
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
     background-color: var(--azul-oscuro);
     color: var(--blanco);
- 
-    display: flex;
-    flex-direction: column;
 }
- 
-/* Contenedor principal */
-.main {
-    flex: 1;
-    margin: 24px; /* márgenes generales para todo el contenido */
-}
- 
+
 /* ================= MENÚ ================= */
 .menu {
     display: flex;
+    justify-content: center;
     list-style: none;
-    padding: 18px 24px;
+    padding: 18px;
     margin: 0;
     background-color: var(--vino);
 }
- 
+
 .menu li {
-    margin-right: 24px;
+    margin: 0 15px;
 }
- 
+
 .menu a {
     color: var(--blanco);
     text-decoration: none;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     padding: 10px 14px;
 }
- 
+
 .menu a:hover {
     background-color: var(--naranja);
-    border-radius: 4px;
+    border-radius: 6px;
 }
- 
-/* ================= CONTENIDO ================= */
+
+/* ================= CONTENIDO GENERAL ================= */
 .contenido {
-    margin: 24px; /* margen general */
+    max-width: 1100px;
+    margin: 70px auto;
+    padding: 0 20px;
+    text-align: center;
 }
- 
+
 /* ================= TÍTULOS ================= */
 h1 {
-    font-size: 44px;
-    text-align: center;
+    font-size: clamp(32px, 5vw, 48px);
     color: var(--amarillo);
+    text-align: center;
+    margin-bottom: 25px;
 }
- 
+
 h2 {
-    font-size: 32px;
+    font-size: clamp(24px, 4vw, 34px);
     color: var(--naranja);
+    margin-bottom: 20px;
 }
- 
+
 h3 {
-    font-size: 26px;
+    font-size: clamp(18px, 3vw, 24px);
     color: var(--blanco);
+    margin-bottom: 15px;
 }
- 
-/* ================= IMÁGENES ================= */
+
+/* ================= TEXTO ================= */
+p, li {
+    line-height: 1.7;
+}
+
+/* ================= IMÁGENES (BANNER STYLE) ================= */
 img {
     display: block;
-    margin: 24px auto; /* centradas con margen superior e inferior */
+    margin: 40px auto;
     max-width: 100%;
     height: auto;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    transition: transform 0.4s ease;
 }
- 
-/* ================= CONTENEDOR DE IMAGEN ================= */
+
+img:hover {
+    transform: scale(1.03);
+}
+
+/* ================= CONTENEDOR IMAGEN SUPERPUESTA ================= */
 .contenedor {
     position: relative;
-    display: inline-block;
-    margin: 24px auto; /* mantiene margen general */
+    max-width: 1200px;
+    margin: 60px auto;
 }
- 
-.contenedor img.fade-img {
-    width: 100%;
-    display: block;
+
+.fade-img {
+    opacity: 0;
+    animation: aparecer 2.5s ease forwards;
 }
- 
-.texto {
+
+@keyframes aparecer {
+    to {
+        opacity: 1;
+    }
+}
+
+.imagen-pequena {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px black;
-}
- 
-/* ================= ANIMACIONES ================= */
-.fade-img {
+    width: 25%;
+    z-index: 2;
     opacity: 0;
-    transform: scale(1.05);
-    animation: aparecer 2.5s ease-out forwards;
+    animation: aparecer-peq 2.5s ease forwards 1s;
 }
- 
-@keyframes aparecer {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
- 
-/* ================= IMAGEN PEQUEÑA CENTRADA ================= */
-.imagen-pequena {
-    position: absolute;      /* Para superponerse a la imagen grande */
-    top: 50%;                /* Centrado vertical */
-    left: 50%;               /* Centrado horizontal */
-    transform: translate(-50%, -50%); /* Centrado exacto */
-   
-    width: 25%;              /* 1/4 del ancho de la imagen grande */
-    height: auto;            /* Mantiene la proporción */
-    z-index: 2;              /* Encima de la imagen grande */
- 
-    opacity: 0;
-    animation: aparecer-peq 2.5s ease-out forwards 1s; /* 1s de retraso */
-}
- 
+
 @keyframes aparecer-peq {
     to {
         opacity: 1;
     }
 }
- 
+
 /* ================= TABLA BIOGRAFÍA ================= */
 .tabla-biografia {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 24px;
+    margin-top: 40px;
     border: 3px solid var(--vino);
 }
- 
+
 .tabla-biografia th,
 .tabla-biografia td {
     padding: 16px;
-    text-align: left;
     border: 1px solid var(--amarillo);
-    font-size: 20px;
 }
- 
+
 .tabla-biografia th {
     background-color: var(--vino);
-    color: var(--blanco);
 }
- 
+
 .tabla-biografia td {
-    background-color: #23376d;
-    color: var(--blanco);
+    background-color: var(--azul-claro);
 }
- 
+
 .tabla-biografia tbody tr:hover {
     background-color: var(--naranja);
-    cursor: pointer;
 }
- 
-/* ================= FOOTER ================= */
-.footer {
-    background-color: var(--vino);
-    color: var(--blanco);
-    text-align: center;
-    padding: 18px 24px;
-    font-size: 18px;
-}
- 
-/* ================= TABLA DE IMÁGENES ================= */
+
+/* ================= TABLA PROGRAMAS ================= */
 .tabla-imagenes {
-    margin: 24px auto;  /* mantiene márgenes superior/inferior y centra la tabla */
-    max-width: 1200px;   /* ancho máximo más grande que antes, tabla más compacta que toda la pantalla */
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
 }
- 
+
 .tabla-imagenes table {
-    width: 100%;        /* ocupa todo el contenedor */
+    width: 100%;
     border-collapse: collapse;
 }
- 
+
 .tabla-imagenes td {
-    padding: 10px;       /* espacio interno de celdas */
-    vertical-align: top; /* alinea contenido arriba */
+    padding: 24px;
+    vertical-align: middle;
 }
- 
-/* Primer columna: imágenes grandes y con el mismo tamaño que antes */
-.tabla-imagenes td:first-child img {
-    width: 550px;   /* tamaño grande restaurado */
-    height: auto;   /* mantiene proporción */
-    display: block;
-    margin: 0 auto 8px auto; /* centrado horizontal con margen inferior para el texto */
-}
- 
-/* Texto debajo de la imagen */
+
 .texto-imagen {
-    text-align: center;  /* texto centrado debajo de la imagen */
-    margin: 0;
+    margin-top: 10px;
     font-size: 18px;
-    color: var(--blanco);
 }
- 
-/* Segunda columna: descripción alineada a la izquierda */
-.tabla-imagenes td:nth-child(2) {
-    text-align: left;  /* alinea texto a la izquierda */
-}
- 
+
 .descripcion {
-    margin: 0;       /* elimina márgenes extra */
-    font-size: 22px; /* tamaño más grande para mejor lectura */
-    color: var(--blanco);
+    font-size: 20px;
+    line-height: 1.6;
+    text-align: left;
 }
- 
-/* ================= BANNER DE IMÁGENES ================= */
+
+/* ================= BANNER DE PARTNERS ================= */
 .banner-imagenes {
     display: flex;
-    list-style: none;         /* Elimina los puntos de la lista */
-    padding: 0;
-    margin: 0;
-    justify-content: center;  /* Centra el menú horizontalmente */
-    gap: 20px;                /* Espacio entre las imágenes */
-    background-color: var(--vino); /* Fondo de color vino */
-    padding: 20px 0;          /* Espaciado superior e inferior */
-    border-radius: 10px;      /* Bordes redondeados en el contenedor */
+    justify-content: center;
+    gap: 25px;
+    list-style: none;
+    padding: 30px 20px;
+    background-color: var(--vino);
+    border-radius: 14px;
+    flex-wrap: wrap;
 }
- 
-.banner-imagenes li {
-    display: flex;            /* Necesario para que las imágenes se alineen correctamente */
-    justify-content: center;  /* Centra las imágenes dentro de cada li */
-    align-items: center;      /* Centra las imágenes verticalmente */
-}
- 
+
 .banner-imagenes img {
-    width: 180px;             /* Establece un tamaño uniforme más grande para todas las imágenes */
-    height: auto;             /* Mantiene la proporción de las imágenes */
-    border-radius: 8px;       /* Bordes redondeados para un look más estilizado */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave alrededor de las imágenes */
-    transition: transform 0.3s ease; /* Añade transición suave al hover */
+    width: 160px;
 }
- 
-.banner-imagenes img:hover {
-    transform: scale(1.1);    /* Aumenta el tamaño de la imagen al pasar el cursor sobre ella */
+
+/* ================= VIDEO RESPONSIVE ================= */
+.video-container {
+    max-width: 1100px;
+    margin: 90px auto;
+    padding: 0 20px;
 }
- 
-/* ================= PALETA DE COLORES ================= */
-:root {
-    --azul-claro: #23376d;  /* Azul claro actualizado */
-    --vino: #7d0a42;
-    --naranja: #eb7207;
-    --amarillo: #fdb500;
-    --blanco: #ffffff;
+
+.video-container iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
 }
- 
-/* TABLA */
+
+/* ================= TABLA BENEFICIADOS ================= */
 .tabla-una-fila {
     width: 100%;
     max-width: 900px;
-    margin: 40px auto;
+    margin: 80px auto;
     border-collapse: separate;
     border-spacing: 24px;
 }
- 
-/* CELDAS → NO FLEX */
+
 .tabla-una-fila td {
     width: 50%;
     height: 220px;
-    padding: 0;
-    border-radius: 8px;
+    border-radius: 12px;
 }
- 
-.color-vino {
-    background-color: var(--vino);
-}
- 
-.color-amarillo {
-    background-color: var(--amarillo);
-}
- 
-.color-naranja {
-    background-color: var(--naranja);
-}
- 
-.color-azul-claro {
-    background-color: var(--azul-claro);  /* Azul claro */
-}
- 
+
+.color-vino { background-color: var(--vino); }
+.color-amarillo { background-color: var(--amarillo); }
+.color-naranja { background-color: var(--naranja); }
+.color-azul-claro { background-color: var(--azul-claro); }
+
 .cuadro {
-    width: 100%;
     height: 100%;
- 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
- 
-    text-align: center;
 }
- 
+
 .numero {
-    font-size: 72px;
+    font-size: 64px;
     font-weight: bold;
-    line-height: 1;
 }
- 
+
 .linea {
     width: 40px;
     height: 2px;
     background-color: var(--blanco);
-    margin: 10px 0;
+    margin: 12px 0;
 }
- 
-/* TEXTO DE LOS CUADROS (NO CHOCA CON NADA) */
+
 .texto-cuadro {
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    position: static;
 }
- 
- 
+
+/* ================= FOOTER ================= */
+.footer,
 .footer-vino {
-    background-color: #7a0d3a; /* VINO */
-    color: white;
-    padding: 40px 60px 20px;
-    font-family: Arial, sans-serif;
-}
- 
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 1.2fr;
-    gap: 40px;
-    align-items: start;
-}
- 
-/* SECCIONES */
-.footer-section h4 {
-    margin: 0 0 10px;
-    font-size: 16px;
-    letter-spacing: 1px;
-}
- 
-.footer-section p {
-    color: var(--blanco);
-    font-size: 16px;
-    margin: 0;
-    cursor: default;        /* ❌ no manita */
-    text-decoration: none;  /* ❌ sin subrayado */
-}
- 
-.footer-section p:hover {
-    text-decoration: none;
-}
- 
-/* LOGO */
-.footer-logo {
-    width: 400px;      /* ⬅️ cambia este valor */
-    max-width: 100%;
-    height: auto;
-}
- 
-.center {
-    text-align: center;
-}
- 
- 
- 
-/* BOTONES */
-.btn-footer {
-    display: inline-block;
-    margin: 12px 0;
-    padding: 8px 18px;
-    background-color: white;
-    color: #7a0d3a;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-}
- 
-/* ICONOS */
-.social-icons span {
-    display: inline-block;
-    margin-left: 10px;
-    width: 32px;
-    height: 32px;
-    background-color: white;
-    color: #7a0d3a;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 32px;
-    font-weight: bold;
-}
- 
-/* PIE */
-.footer-bottom {
-    margin-top: 30px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255,255,255,0.3);
-    text-align: center;
-    font-size: 13px;
-}
- 
-.footer {
     background-color: var(--vino);
-    padding: 30px 20px;
+    color: var(--blanco);
+    padding: 40px 20px;
 }
- 
-.footer-contenido {
+
+.footer-grid {
     max-width: 1200px;
     margin: auto;
- 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
 }
- 
-.footer-texto p {
-    margin: 0;
-    font-size: 18px;
-    color: var(--blanco);
+
+.footer-logo {
+    width: 320px;
+    max-width: 100%;
 }
- 
-/* ICONOS */
-.footer-iconos {
-    display: flex;
-    gap: 20px;
-}
- 
-.footer-iconos img {
-    width: 42px;
-    height: 42px;
-    cursor: pointer;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
- 
-.footer-iconos img:hover {
-    transform: scale(1.2);
-    opacity: 0.8;
-}
- 
+
 .social-icons {
-    display: flex !important;
-    justify-content: flex-start !important; /* ⬅️ los pega a la izquierda */
-    align-items: center;
-    gap: 0 !important;
- 
-    margin-left: 0 !important;
-    padding-left: 0 !important;
+    display: flex;
+    gap: 10px;
 }
- 
+
 .social-icons img {
     width: 42px;
-    height: 42px;
-    margin: 0 !important;       /* elimina márgenes */
-    padding: 0 !important;      /* elimina padding */
-    display: block;             /* elimina espacios inline */
 }
- 
-.footer-section:last-child p {
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+    .menu {
+        flex-direction: column;
+    }
+
+    .tabla-imagenes table,
+    .tabla-imagenes tr,
+    .tabla-imagenes td {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .descripcion {
+        text-align: center;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+footer > p {
+    text-align: center;
+}
+
+.footer-vino .footer-section:last-child p {
     text-align: center;
     width: 100%;
 }
- 
- 
-.footer-section.right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;   /* 🔥 empuja TODO a la derecha */
-    text-align: right;
+
+/* PROGRAMAS – IMÁGENES GRANDES */
+.tabla-imagenes td:first-child img {
+    width: 550px;       
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 12px;
+}
+
+/* BANNERS MÁS GRANDES */
+.banner-imagenes img {
+    width: 220px;       
+    max-width: 100%;
+}
+
+.banner-imagenes {
+    flex-wrap: wrap;
+}
+
+/* ================= EFECTO ELEGANTE EN TÍTULOS (SIN FONDO) ================= */
+h1, h2 {
+    display: inline-block; 
+    transition:
+        transform 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+/* Efecto hover: se levanta */
+h1:hover,
+h2:hover {
+    transform: translateY(-4px);
+    text-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* ================= H1 SIEMPRE CENTRADO ================= */
+h1 {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ================= EFECTO DE ELEVACIÓN EN TABLAS ================= */
+
+.tabla-biografia,
+.tabla-imagenes table,
+.tabla-una-fila {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.tabla-biografia:hover,
+.tabla-imagenes table:hover,
+.tabla-una-fila:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+
+/* ================= EVITAR MOVIMIENTO EN IMAGEN PEQUEÑA ================= */
+.imagen-pequena {
+    transition: none;
+}
+
+.imagen-pequena:hover {
+    transform: translate(-50%, -50%);
+}
+
+/* ================= APARICIÓN SUAVE EN TODAS LAS IMÁGENES ================= */
+img {
+    opacity: 0;
+    animation: aparecer 1.8s ease forwards;
 }

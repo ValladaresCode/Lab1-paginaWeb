@@ -1,178 +1,205 @@
-/* ================= GOOGLE FONT ================= */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
 /* ================= PALETA DE COLORES ================= */
 :root {
     --azul-oscuro: #16233f;
-    --azul-claro: #23376d;
     --vino: #7d0a42;
     --naranja: #eb7207;
     --amarillo: #fdb500;
     --blanco: #ffffff;
 }
-
+ 
 /* ================= ESTRUCTURA GENERAL ================= */
 html, body {
     height: 100%;
 }
-
+ 
 body {
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px; /* TEXTO GENERAL MÁS GRANDE */
     margin: 0;
     padding: 0;
     background-color: var(--azul-oscuro);
     color: var(--blanco);
+ 
+    display: flex;
+    flex-direction: column;
 }
-
+ 
+/* Contenedor principal */
+.main {
+    flex: 1;
+    margin: 24px; /* márgenes generales para todo el contenido */
+}
+ 
 /* ================= MENÚ ================= */
 .menu {
     display: flex;
-    justify-content: center;
     list-style: none;
-    padding: 20px;
+    padding: 18px 24px;
     margin: 0;
     background-color: var(--vino);
 }
-
+ 
 .menu li {
-    margin: 0 20px;
+    margin-right: 24px;
 }
-
+ 
 .menu a {
     color: var(--blanco);
     text-decoration: none;
-    font-weight: 600;
-    font-size: 18px;
-    padding: 10px 16px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 14px;
 }
-
+ 
 .menu a:hover {
     background-color: var(--naranja);
+    border-radius: 4px;
 }
-
+ 
 /* ================= CONTENIDO ================= */
 .contenido {
-    margin: 50px auto;
-    max-width: 900px;
+    margin: 24px; /* margen general */
 }
-
-/* ❗ NO centramos todo para no romper la tabla */
-.contenido h2,
-.contenido h3,
-.contenido p {
-    text-align: center;
-}
-
-.contenido p {
-    line-height: 1.7;
-    font-weight: 300;
-}
-
+ 
 /* ================= TÍTULOS ================= */
 h1 {
-    font-size: 46px;
+    font-size: 44px;
     text-align: center;
     color: var(--amarillo);
-    margin-top: 30px;
 }
-
+ 
 h2 {
-    font-size: 30px;
+    font-size: 32px;
     color: var(--naranja);
 }
-
+ 
 h3 {
-    font-size: 22px;
-    font-weight: 600;
+    font-size: 26px;
+    color: var(--blanco);
 }
-
+ 
 /* ================= IMÁGENES ================= */
-.imagen-principal {
-    width: 750px;
-    height: 500px;
-    object-fit: cover;
-    border-radius: 16px;
-    margin: 30px auto;
+img {
     display: block;
-
-    /* Fade-in */
+    margin: 24px auto; /* centradas con margen superior e inferior */
+    max-width: 100%;
+    height: auto;
+}
+ 
+/* ================= CONTENEDOR DE IMAGEN ================= */
+.contenedor {
+    position: relative;
+    display: inline-block;
+    margin: 24px auto; /* mantiene margen general */
+}
+ 
+.contenedor img.fade-img {
+    width: 100%;
+    display: block;
+}
+ 
+.texto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px black;
+}
+ 
+/* ================= ANIMACIONES ================= */
+.fade-img {
     opacity: 0;
-    animation: fadeImg 1.2s ease forwards;
-
-    /* Hover */
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform: scale(1.05);
+    animation: aparecer 2.5s ease-out forwards;
 }
-
-.imagen-principal:hover {
-    transform: translateY(-12px) scale(1.03);
-    box-shadow: 0 20px 35px rgba(0,0,0,0.45);
+ 
+@keyframes aparecer {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
-
-@keyframes fadeImg {
+ 
+/* ================= IMAGEN PEQUEÑA CENTRADA ================= */
+.imagen-pequena {
+    position: absolute;      /* Para superponerse a la imagen grande */
+    top: 50%;                /* Centrado vertical */
+    left: 50%;               /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Centrado exacto */
+   
+    width: 25%;              /* 1/4 del ancho de la imagen grande */
+    height: auto;            /* Mantiene la proporción */
+    z-index: 2;              /* Encima de la imagen grande */
+ 
+    opacity: 0;
+    animation: aparecer-peq 2.5s ease-out forwards 1s; /* 1s de retraso */
+}
+ 
+@keyframes aparecer-peq {
     to {
         opacity: 1;
     }
 }
-
-/* ================= TABLA BIOGRAFÍA (RESPETADA) ================= */
+ 
+/* ================= TABLA BIOGRAFÍA ================= */
 .tabla-biografia {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 30px;
+    margin-top: 24px;
     border: 3px solid var(--vino);
 }
-
+ 
 .tabla-biografia th,
 .tabla-biografia td {
     padding: 16px;
     text-align: left;
     border: 1px solid var(--amarillo);
-    font-size: 18px;
+    font-size: 20px;
 }
-
+ 
 .tabla-biografia th {
     background-color: var(--vino);
     color: var(--blanco);
 }
-
+ 
 .tabla-biografia td {
-    background-color: var(--azul-claro);
+    background-color: #23376d;
+    color: var(--blanco);
 }
-
+ 
 .tabla-biografia tbody tr:hover {
     background-color: var(--naranja);
+    cursor: pointer;
 }
-
+ 
 /* ================= FOOTER ================= */
 .footer {
     background-color: var(--vino);
     color: var(--blanco);
     text-align: center;
-    padding: 22px;
-    font-size: 16px;
-    margin-top: 60px;
+    padding: 18px 24px;
+    font-size: 18px;
 }
-
-
+ 
 /* ================= TABLA DE IMÁGENES ================= */
 .tabla-imagenes {
     margin: 24px auto;  /* mantiene márgenes superior/inferior y centra la tabla */
     max-width: 1200px;   /* ancho máximo más grande que antes, tabla más compacta que toda la pantalla */
 }
-
+ 
 .tabla-imagenes table {
     width: 100%;        /* ocupa todo el contenedor */
     border-collapse: collapse;
 }
-
+ 
 .tabla-imagenes td {
     padding: 10px;       /* espacio interno de celdas */
     vertical-align: top; /* alinea contenido arriba */
 }
-
+ 
 /* Primer columna: imágenes grandes y con el mismo tamaño que antes */
 .tabla-imagenes td:first-child img {
     width: 550px;   /* tamaño grande restaurado */
@@ -180,7 +207,7 @@ h3 {
     display: block;
     margin: 0 auto 8px auto; /* centrado horizontal con margen inferior para el texto */
 }
-
+ 
 /* Texto debajo de la imagen */
 .texto-imagen {
     text-align: center;  /* texto centrado debajo de la imagen */
@@ -188,18 +215,18 @@ h3 {
     font-size: 18px;
     color: var(--blanco);
 }
-
+ 
 /* Segunda columna: descripción alineada a la izquierda */
 .tabla-imagenes td:nth-child(2) {
     text-align: left;  /* alinea texto a la izquierda */
 }
-
+ 
 .descripcion {
     margin: 0;       /* elimina márgenes extra */
     font-size: 22px; /* tamaño más grande para mejor lectura */
     color: var(--blanco);
 }
-
+ 
 /* ================= BANNER DE IMÁGENES ================= */
 .banner-imagenes {
     display: flex;
@@ -212,13 +239,13 @@ h3 {
     padding: 20px 0;          /* Espaciado superior e inferior */
     border-radius: 10px;      /* Bordes redondeados en el contenedor */
 }
-
+ 
 .banner-imagenes li {
     display: flex;            /* Necesario para que las imágenes se alineen correctamente */
     justify-content: center;  /* Centra las imágenes dentro de cada li */
     align-items: center;      /* Centra las imágenes verticalmente */
 }
-
+ 
 .banner-imagenes img {
     width: 180px;             /* Establece un tamaño uniforme más grande para todas las imágenes */
     height: auto;             /* Mantiene la proporción de las imágenes */
@@ -226,11 +253,11 @@ h3 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave alrededor de las imágenes */
     transition: transform 0.3s ease; /* Añade transición suave al hover */
 }
-
+ 
 .banner-imagenes img:hover {
     transform: scale(1.1);    /* Aumenta el tamaño de la imagen al pasar el cursor sobre ella */
 }
-
+ 
 /* ================= PALETA DE COLORES ================= */
 :root {
     --azul-claro: #23376d;  /* Azul claro actualizado */
@@ -239,7 +266,7 @@ h3 {
     --amarillo: #fdb500;
     --blanco: #ffffff;
 }
-
+ 
 /* TABLA */
 .tabla-una-fila {
     width: 100%;
@@ -248,7 +275,7 @@ h3 {
     border-collapse: separate;
     border-spacing: 24px;
 }
-
+ 
 /* CELDAS → NO FLEX */
 .tabla-una-fila td {
     width: 50%;
@@ -256,48 +283,48 @@ h3 {
     padding: 0;
     border-radius: 8px;
 }
-
+ 
 .color-vino {
     background-color: var(--vino);
 }
-
+ 
 .color-amarillo {
     background-color: var(--amarillo);
 }
-
+ 
 .color-naranja {
     background-color: var(--naranja);
 }
-
+ 
 .color-azul-claro {
     background-color: var(--azul-claro);  /* Azul claro */
 }
-
+ 
 .cuadro {
     width: 100%;
     height: 100%;
-
+ 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+ 
     text-align: center;
 }
-
+ 
 .numero {
     font-size: 72px;
     font-weight: bold;
     line-height: 1;
 }
-
+ 
 .linea {
     width: 40px;
     height: 2px;
     background-color: var(--blanco);
     margin: 10px 0;
 }
-
+ 
 /* TEXTO DE LOS CUADROS (NO CHOCA CON NADA) */
 .texto-cuadro {
     font-size: 16px;
@@ -305,29 +332,29 @@ h3 {
     text-transform: uppercase;
     position: static;
 }
-
-
+ 
+ 
 .footer-vino {
     background-color: #7a0d3a; /* VINO */
     color: white;
     padding: 40px 60px 20px;
     font-family: Arial, sans-serif;
 }
-
+ 
 .footer-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr 1.2fr;
     gap: 40px;
     align-items: start;
 }
-
+ 
 /* SECCIONES */
 .footer-section h4 {
     margin: 0 0 10px;
     font-size: 16px;
     letter-spacing: 1px;
 }
-
+ 
 .footer-section p {
     color: var(--blanco);
     font-size: 16px;
@@ -335,24 +362,24 @@ h3 {
     cursor: default;        /* ❌ no manita */
     text-decoration: none;  /* ❌ sin subrayado */
 }
-
+ 
 .footer-section p:hover {
     text-decoration: none;
 }
-
+ 
 /* LOGO */
 .footer-logo {
     width: 400px;      /* ⬅️ cambia este valor */
     max-width: 100%;
     height: auto;
 }
-
+ 
 .center {
     text-align: center;
 }
-
-
-
+ 
+ 
+ 
 /* BOTONES */
 .btn-footer {
     display: inline-block;
@@ -365,7 +392,7 @@ h3 {
     font-weight: bold;
     font-size: 14px;
 }
-
+ 
 /* ICONOS */
 .social-icons span {
     display: inline-block;
@@ -379,7 +406,7 @@ h3 {
     line-height: 32px;
     font-weight: bold;
 }
-
+ 
 /* PIE */
 .footer-bottom {
     margin-top: 30px;
@@ -388,56 +415,56 @@ h3 {
     text-align: center;
     font-size: 13px;
 }
-
+ 
 .footer {
     background-color: var(--vino);
     padding: 30px 20px;
 }
-
+ 
 .footer-contenido {
     max-width: 1200px;
     margin: auto;
-
+ 
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
-
+ 
 .footer-texto p {
     margin: 0;
     font-size: 18px;
     color: var(--blanco);
 }
-
+ 
 /* ICONOS */
 .footer-iconos {
     display: flex;
     gap: 20px;
 }
-
+ 
 .footer-iconos img {
     width: 42px;
     height: 42px;
     cursor: pointer;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
-
+ 
 .footer-iconos img:hover {
     transform: scale(1.2);
     opacity: 0.8;
 }
-
+ 
 .social-icons {
     display: flex !important;
     justify-content: flex-start !important; /* ⬅️ los pega a la izquierda */
     align-items: center;
     gap: 0 !important;
-
+ 
     margin-left: 0 !important;
     padding-left: 0 !important;
 }
-
+ 
 .social-icons img {
     width: 42px;
     height: 42px;
@@ -445,18 +472,16 @@ h3 {
     padding: 0 !important;      /* elimina padding */
     display: block;             /* elimina espacios inline */
 }
-
+ 
 .footer-section:last-child p {
     text-align: center;
     width: 100%;
 }
-
-
+ 
+ 
 .footer-section.right {
     display: flex;
     flex-direction: column;
     align-items: flex-end;   /* 🔥 empuja TODO a la derecha */
     text-align: right;
 }
-
-
